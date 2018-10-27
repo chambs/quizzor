@@ -4,6 +4,7 @@ import StateManager from './StateManager';
 import './App.css';
 import Home from './home/Home';
 import CreateQuizz from './create_quizz/CreateQuizz';
+import AddQuestions from './create_quizz/AddQuestions';
 
 class App extends Component {
 
@@ -11,7 +12,6 @@ class App extends Component {
     super(props);
 
     this.state = {
-      rucula: 'nove',
       quizzName: '',
       quizzDescription: '',
       questions: []
@@ -20,12 +20,17 @@ class App extends Component {
     this.stateMgr = new StateManager(this);
   }
 
+  setHome(props) {return <Home stateMgr={this.stateMgr}/>}
+  setCreateQuizz(props) {return <CreateQuizz stateMgr={this.stateMgr}/>}
+  setAddQuestions(props) {return <AddQuestions stateMgr={this.stateMgr}/>}
+
   render() {
     return ( 
       <Router>
         <Switch>
-          <Route exact path="/" render={props => <Home stateMgr={this.stateMgr}/>}></Route>
-          <Route path="/create_quizz" render={props => <CreateQuizz stateMgr={this.stateMgr}/>}></Route>
+          <Route exact path="/" render={this.setHome.bind(this)}></Route>
+          <Route path="/create_quizz" render={this.setCreateQuizz.bind(this)}></Route>
+          <Route path="/add_questions" render={this.setAddQuestions.bind(this)}></Route>
         </Switch>
       </Router>
     );

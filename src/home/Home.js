@@ -12,11 +12,10 @@ export default class Home extends React.Component {
   }
 
   render () {
-    const rucula = this.stateMgr.get('rucula');
     return (
       <OuterLayer>
         <MdlCell cellLength="8">
-          <h1>Welcome to Quizzor {rucula}</h1>
+          <h1>Welcome to Quizzor</h1>
           <p>Appzor allows you to create quizz games to play with your friends or
             studends</p>
           <p>You can create a quizz with these simple steps:</p>
