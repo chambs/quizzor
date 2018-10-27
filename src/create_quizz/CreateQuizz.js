@@ -3,6 +3,7 @@ import OuterLayer from '../outer_layer/OuterLayer';
 import MdlCell from '../outer_layer/MdlCell';
 import UpperMenu from '../upper_menu/UpperMenu';
 import {Link} from 'react-router-dom';
+// import componentHandler from '../window.mdl';
 
 export default class CreateQuizz extends React.Component {
   constructor(props) {
@@ -13,6 +14,11 @@ export default class CreateQuizz extends React.Component {
       quizzDescription: '',
       questions: []
     };
+  }
+
+  componentDidMount() {
+    const els = document.querySelectorAll('.mdl-textfield');
+    els.forEach(el => window.componentHandler.upgradeElement(el));
   }
 
   shouldButtonEnable() {
@@ -48,7 +54,7 @@ export default class CreateQuizz extends React.Component {
             <form action="#">
             <div className="mdl-grid">
                 <MdlCell cellLength="12">
-                <div className="mdl-textfield mdl-js-textfield">
+                <div className="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
                   <label className="mdl-textfield__label" htmlFor="name">Quizz name</label>
                   <input className="mdl-textfield__input" type="text" id="name" value={name} onChange={this.handleChange.bind(this)}/>
                 </div>
