@@ -12,8 +12,6 @@ const UpperMenu = () => {
           {/* Navigation. We hide it in small screens. */}
           <nav className="mdl-navigation mdl-layout--large-screen-only">
             <a className="mdl-navigation__link" href="/">Home</a>
-            <a className="mdl-navigation__link" href="/">About</a>
-            <a className="mdl-navigation__link" href="/">Contact</a>
           </nav>
         </div>
       </header>

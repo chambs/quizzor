@@ -5,8 +5,14 @@ import Home from './home/Home';
 import CreateQuizz from './create_quizz/CreateQuizz';
 
 class App extends Component {
+
+  // generateTempId() {
+  //   const randomNumber = Math.round(Math.random() * 1e7);
+  //   return randomNumber.toString(16);
+  // }
+
   render() {
-    return (
+    return ( 
       <Router>
         <Switch>
           <Route exact path="/" component={Home}></Route>
