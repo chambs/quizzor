@@ -8,12 +8,16 @@ import {Link} from 'react-router-dom';
 export default class CreateQuizz extends React.Component {
   constructor(props) {
     super(props);
+    this.fields = [];
     this.stateMgr = props.stateMgr;
   }
 
   componentDidMount() {
-    const els = document.querySelectorAll('.mdl-textfield');
-    els.forEach(el => window.componentHandler.upgradeElement(el));
+    this.fields.forEach(node => {
+      if(node) {
+        window.componentHandler.upgradeElement(node);
+      }
+    })
   }
 
   shouldButtonEnable() {
@@ -54,7 +58,7 @@ export default class CreateQuizz extends React.Component {
             <form action="#">
             <div className="mdl-grid">
                 <MdlCell cellLength="12">
-                <div className="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+                <div ref={node => this.fields.push(node)} className="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
                   <label className="mdl-textfield__label" htmlFor="name">Quizz name</label>
                   <input className="mdl-textfield__input" type="text" id="name" value={name} onChange={this.handleChange.bind(this)}/>
                 </div>
@@ -62,7 +66,7 @@ export default class CreateQuizz extends React.Component {
               </div>
               <div className="mdl-grid">
                 <MdlCell cellLength="12">
-                <div className="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+                <div ref={node => this.fields.push(node)} className="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
                   <textarea className="mdl-textfield__input" type="text" rows="5" id="descr" value={descr} onChange={this.handleChangeDescr.bind(this)}></textarea>
                   <label className="mdl-textfield__label" htmlFor="descr">Description</label>
                 </div>
